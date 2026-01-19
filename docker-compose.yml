@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: campus_qa_backend
+    command: uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+    restart: always
+
+  frontend:
+    build: .
+    container_name: campus_qa_frontend
+    command: streamlit run src/frontend/app.py
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONPATH=/app
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: always
+
+  # MySQL Database (Optional, uncomment to use)
+  # db:
+  #   image: mysql:8.0
+  #   container_name: campus_qa_db
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: campus_qa
+  #   ports:
+  #     - "3306:3306"
+  #   volumes:
+  #     - db_data:/var/lib/mysql
+
+  # Milvus Vector DB (Requires additional configuration for etcd/minio)
+  # Check Milvus documentation for docker-compose standalone setup.
+
+# volumes:
+#   db_data:
