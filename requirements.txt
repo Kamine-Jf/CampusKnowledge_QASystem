@@ -1,8 +1,9 @@
 fastapi==0.110.0
 uvicorn==0.29.0
+python-multipart==0.0.9
 pymysql==1.1.0
-milvus-lite==2.4.0        # 最新轻量化版本，适配3.11，本地运行无集群，显存占用更低
-pymilvus==2.4.0           # 与 milvus-lite 版本匹配，用于客户端连接与DDL/搜索
+milvus==2.6.9            # 统一使用 Milvus 2.6.9 服务端
+pymilvus==2.6.8          # 与服务端保持一致版本，提供客户端 CRUD 能力
 langchain==0.1.10
 langchain-community==0.0.28
 pypdf==4.0.2
@@ -15,5 +16,7 @@ numpy==1.26.4
 python-dotenv==1.0.1
 logging==0.5.1.2
 requests==2.31.0
+openai==1.14.0
 xlrd==2.0.1
 openpyxl==3.1.2
+jieba==0.42.1

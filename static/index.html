@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus QA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=21">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="page-login" class="page active">
+        <div class="auth-layout">
+            <div class="brand-panel brand-panel--login">
+                <img src="/static/logo.png" alt="Logo" class="brand-icon">
+                <h1 class="brand-title">Campus Knowledge</h1>
+                <h2 class="brand-sub">QA System</h2>
+                <p class="brand-desc">基于 RAG 技术的校园智能问答系统，为您提供准确、快速的校园信息查询服务。</p>
+                <div class="features">
+                    <div class="feat-item"><span class="feat-dot"></span><span>RAG 智能检索 · 精准回答校园问题</span></div>
+                    <div class="feat-item"><span class="feat-dot"></span><span>多源融合 · MySQL + Milvus 双引擎</span></div>
+                    <div class="feat-item"><span class="feat-dot"></span><span>会话记忆 · 支持多轮对话历史</span></div>
+                </div>
+            </div>
+            <div class="form-panel">
+                <form id="login-form" class="auth-form" autocomplete="off">
+                    <div class="form-header">
+                        <h2 class="form-title">欢迎登录</h2>
+                        <p class="form-subtitle">请输入您的账号和密码登录系统</p>
+                    </div>
+                    <div class="fields-group">
+                        <div class="field">
+                            <label class="field-label">账号</label>
+                            <input type="text" class="field-input" id="login-account" placeholder="请输入手机号或学号" required>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">密码</label>
+                            <input type="password" class="field-input" id="login-password" placeholder="请输入密码" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">登 录</button>
+                    <div class="divider-row"><span class="divider-line"></span><span class="divider-text">或</span><span class="divider-line"></span></div>
+                    <div class="switch-row">
+                        <span class="switch-text">没有账号？</span>
+                        <a href="#" class="switch-link" data-goto="page-register">立即注册</a>
+                    </div>
+                    <div class="admin-row">
+                        <a href="#" class="admin-link" data-goto="page-admin-login">管理员登录 →</a>
+                    </div>
+                    <p class="form-error" id="login-error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Page -->
+    <div id="page-register" class="page">
+        <div class="auth-layout">
+            <div class="brand-panel brand-panel--login">
+                <img src="/static/logo.png" alt="Logo" class="brand-icon">
+                <h1 class="brand-title">Campus Knowledge</h1>
+                <h2 class="brand-sub">QA System</h2>
+                <p class="brand-desc">注册账号即可开始使用智能问答服务，快速获取校园信息。</p>
+            </div>
+            <div class="form-panel">
+                <form id="register-form" class="auth-form" autocomplete="off">
+                    <div class="form-header">
+                        <h2 class="form-title">创建账号</h2>
+                        <p class="form-subtitle">请填写以下信息完成注册</p>
+                    </div>
+                    <div class="fields-group">
+                        <div class="field">
+                            <label class="field-label">姓名</label>
+                            <input type="text" class="field-input" id="reg-name" placeholder="请输入真实姓名" required>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">学号</label>
+                            <input type="text" class="field-input" id="reg-sid" placeholder="请输入学号" required>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">手机号</label>
+                            <input type="text" class="field-input" id="reg-phone" placeholder="请输入手机号" required>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">密码</label>
+                            <input type="password" class="field-input" id="reg-password" placeholder="请输入密码（至少6位）" required minlength="6">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">注 册</button>
+                    <div class="divider-row"><span class="divider-line"></span><span class="divider-text">或</span><span class="divider-line"></span></div>
+                    <div class="switch-row">
+                        <span class="switch-text">已有账号？</span>
+                        <a href="#" class="switch-link" data-goto="page-login">返回登录</a>
+                    </div>
+                    <p class="form-error" id="register-error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Page -->
+    <div id="page-admin-login" class="page">
+        <div class="auth-layout">
+            <div class="brand-panel brand-panel--admin">
+                <img src="/static/logo.png" alt="Logo" class="brand-icon">
+                <h1 class="brand-title">Campus Knowledge</h1>
+                <h2 class="brand-sub">Admin Console</h2>
+                <p class="brand-desc">管理员控制台 · 知识库文档管理 · 系统数据监控</p>
+            </div>
+            <div class="form-panel">
+                <form id="admin-login-form" class="auth-form" autocomplete="off">
+                    <div class="form-header">
+                        <h2 class="form-title">管理员登录</h2>
+                        <p class="form-subtitle">请输入管理员账号和密码</p>
+                    </div>
+                    <div class="fields-group">
+                        <div class="field">
+                            <label class="field-label">用户名</label>
+                            <input type="text" class="field-input" id="admin-username" placeholder="请输入管理员用户名" required>
+                        </div>
+                        <div class="field">
+                            <label class="field-label">密码</label>
+                            <input type="password" class="field-input" id="admin-password" placeholder="请输入密码" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary btn-full btn-dark">登 录</button>
+                    <div class="switch-row">
+                        <a href="#" class="switch-link" data-goto="page-login">返回用户登录 →</a>
+                    </div>
+                    <p class="form-error" id="admin-login-error"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Page (Welcome) -->
+    <div id="page-chat" class="page">
+        <div class="chat-layout">
+            <aside class="sidebar" id="chat-sidebar">
+                <div class="sidebar-header">
+                    <img src="/static/logo.png" alt="Logo" class="sidebar-logo">
+                    <span class="sidebar-title">Campus QA</span>
+                    <button class="btn-collapse-sidebar" id="btn-collapse-sidebar" title="收起侧边栏">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                    </button>
+                </div>
+                <button class="btn-new-chat" id="btn-new-chat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                    <span>开启新对话</span>
+                </button>
+                <span class="hist-label">历史会话</span>
+                <div class="history-list" id="history-list"></div>
+                <div class="user-info" id="sidebar-user-info">
+                    <div class="user-meta">
+                        <span class="user-name" id="user-display-name">用户</span>
+                        <span class="user-id" id="user-display-id"></span>
+                    </div>
+                    <button class="btn-user-menu" id="btn-user-menu" title="更多选项">···</button>
+                    <div class="user-menu-popup" id="user-menu-popup">
+                        <button class="user-menu-item" id="btn-toggle-theme">
+                            <span class="user-menu-icon" id="theme-icon">◑</span>
+                            <span id="theme-label">深色模式</span>
+                        </button>
+                        <button class="user-menu-item" id="btn-chat-logout">
+                            <span class="user-menu-icon">→</span>
+                            <span>退出登录</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+            <div class="floating-toolbar" id="floating-toolbar" style="display:none;">
+                <button class="floating-toolbar-btn" id="btn-expand-sidebar" title="展开侧边栏">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+                </button>
+                <span class="floating-toolbar-divider"></span>
+                <button class="floating-toolbar-btn" id="btn-floating-new-chat" title="开启新对话">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                </button>
+            </div>
+            <main class="chat-main" id="chat-main">
+                <!-- Welcome state -->
+                <div class="welcome-section" id="welcome-section">
+                    <h2 class="greet-title" id="greet-title">Hi，我是你的校园问答助理！</h2>
+                    <p class="greet-desc">我可以回答关于郑州轻工业大学学习、工作、生活相关的各种问题。</p>
+                    <div class="chat-input-card">
+                        <input type="text" class="chat-input-main" id="welcome-input" placeholder="请输入您的问题...">
+                        <div class="chat-input-bottom">
+                            <div class="model-pill-wrap" style="position:relative;">
+                                <button class="model-pill" id="model-selector-trigger">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                    <span id="selected-model-name">加载中...</span>
+                                </button>
+                                <div class="model-popup" id="model-dropdown"></div>
+                            </div>
+                            <button class="btn-send-round" id="welcome-send">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conversation state -->
+                <div class="conversation-section" id="conversation-section" style="display:none;">
+                    <div class="top-bar">
+                        <span class="top-title" id="conv-title">新对话</span>
+                        <div class="top-status"><span class="status-dot"></span><span class="status-text">在线</span></div>
+                    </div>
+                    <div class="messages-scroll-wrapper">
+                        <div class="messages-area" id="messages-area"></div>
+                    </div>
+                    <div class="conv-input-wrap">
+                        <div class="chat-input-card">
+                            <input type="text" class="chat-input-main" id="conv-input" placeholder="输入您的问题...">
+                            <div class="chat-input-bottom">
+                                <div class="model-pill-wrap" style="position:relative;">
+                                    <button class="model-pill" id="conv-model-trigger">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                        <span id="conv-model-name">模型</span>
+                                    </button>
+                                    <div class="model-popup" id="conv-model-dropdown"></div>
+                                </div>
+                                <button class="btn-send-round" id="conv-send">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="page-admin" class="page">
+        <div class="admin-layout">
+            <aside class="admin-sidebar">
+                <div class="admin-header">
+                    <img src="/static/logo.png" alt="Logo" class="admin-logo">
+                    <span class="admin-title-text">管理后台</span>
+                </div>
+                <nav class="nav-items" id="admin-nav">
+                    <div class="nav-item active" data-tab="tab-docs">文档管理</div>
+                    <div class="nav-item" data-tab="tab-users">用户管理</div>
+                    <div class="nav-item" data-tab="tab-feedback">用户反馈</div>
+                    <div class="nav-item" data-tab="tab-models">模型管理</div>
+                    <div class="nav-item" data-tab="tab-crawler">爬虫管理</div>
+                    <div class="nav-item" data-tab="tab-settings">系统设置</div>
+                </nav>
+            </aside>
+            <main class="admin-main">
+                <div class="admin-top-bar">
+                    <div class="admin-page-title-area">
+                        <h2 class="admin-page-title" id="admin-page-title">文档管理</h2>
+                        <p class="admin-page-subtitle" id="admin-page-subtitle">上传 .pdf .docx .xlsx 文件至知识库，系统将自动解析并分类存储</p>
+                    </div>
+                    <button class="btn-logout" id="btn-admin-logout">退出登录</button>
+                </div>
+
+                <!-- Document Management Tab -->
+                <div class="admin-tab active" id="tab-docs">
+                    <div class="upload-area" id="upload-area">
+                        <p class="upload-title">点击或拖拽上传 .pdf / .docx / .doc / .xlsx 文件</p>
+                        <p class="upload-hint">PDF/Word（.docx/.doc）文件解析后存入向量数据库，Excel 文件解析后存入 MySQL 数据库</p>
+                        <label class="btn-upload">
+                            <input type="file" id="file-input" accept=".pdf,.docx,.doc,.xlsx,.xls" hidden>
+                            点击上传文件
+                        </label>
+                    </div>
+                    <div class="doc-list-section">
+                        <div class="doc-header-row">
+                            <h3 class="doc-header-title">已上传文档</h3>
+                            <div style="display:flex;gap:8px;align-items:center;">
+                                <button class="btn-upload" id="btn-download-template" style="height:32px;font-size:12px;display:flex;align-items:center;gap:5px;">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    下载 Excel 模板
+                                </button>
+                                <button class="btn-refresh" id="btn-refresh-docs">↻ 刷新</button>
+                            </div>
+                        </div>
+                        <div class="doc-table" id="doc-table">
+                            <div class="table-header">
+                                <div class="th" style="width:280px">文件名</div>
+                                <div class="th" style="width:100px">文件类型</div>
+                                <div class="th" style="width:120px">存储路径</div>
+                                <div class="th" style="width:160px">上传时间</div>
+                                <div class="th" style="flex:1">状态</div>
+                            </div>
+                            <div class="table-body" id="doc-table-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Management Tab -->
+                <div class="admin-tab" id="tab-users">
+                    <div class="doc-list-section">
+                        <div class="doc-header-row">
+                            <h3 class="doc-header-title">注册用户列表</h3>
+                            <button class="btn-refresh" id="btn-refresh-users">↻ 刷新</button>
+                        </div>
+                        <div class="doc-table">
+                            <div class="table-header">
+                                <div class="th" style="width:60px">ID</div>
+                                <div class="th" style="width:120px">姓名</div>
+                                <div class="th" style="width:150px">学号</div>
+                                <div class="th" style="width:140px">手机号</div>
+                                <div class="th" style="width:160px">注册时间</div>
+                                <div class="th" style="flex:1">操作</div>
+                            </div>
+                            <div class="table-body" id="users-table-body"></div>
+                        </div>
+                    </div>
+                    <!-- User History Detail (initially hidden) -->
+                    <div class="doc-list-section" id="user-history-section" style="display:none;">
+                        <div class="doc-header-row">
+                            <h3 class="doc-header-title" id="user-history-title">对话历史</h3>
+                            <button class="btn-refresh" id="btn-close-user-history">✕ 关闭</button>
+                        </div>
+                        <div class="doc-table">
+                            <div class="table-header">
+                                <div class="th" style="width:200px">会话标题</div>
+                                <div class="th" style="width:100px">消息数</div>
+                                <div class="th" style="width:160px">最后活跃</div>
+                                <div class="th" style="flex:1">操作</div>
+                            </div>
+                            <div class="table-body" id="user-sessions-body"></div>
+                        </div>
+                        <!-- Session Messages Detail (initially hidden) -->
+                        <div id="session-messages-section" style="display:none;margin-top:16px;">
+                            <div class="doc-header-row">
+                                <h3 class="doc-header-title" id="session-messages-title">对话详情</h3>
+                                <button class="btn-refresh" id="btn-close-session-messages">✕ 关闭</button>
+                            </div>
+                            <div id="session-messages-body" style="background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:12px;padding:16px;max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Tab -->
+                <div class="admin-tab" id="tab-feedback">
+                    <div class="doc-list-section">
+                        <div class="doc-header-row">
+                            <h3 class="doc-header-title">用户反馈列表</h3>
+                            <button class="btn-refresh" id="btn-refresh-feedback">↻ 刷新</button>
+                        </div>
+                        <div class="doc-table" id="feedback-table">
+                            <div class="table-header">
+                                <div class="th" style="width:100px">用户</div>
+                                <div class="th" style="width:200px">问题</div>
+                                <div class="th" style="width:200px">AI回答</div>
+                                <div class="th" style="flex:1;padding-left:36px">反馈内容</div>
+                                <div class="th" style="width:160px">时间</div>
+                                <div class="th" style="width:80px">操作</div>
+                            </div>
+                            <div class="table-body" id="feedback-table-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Models Tab -->
+                <div class="admin-tab" id="tab-models">
+                    <!-- Add Model Form -->
+                    <div class="model-form-card" id="model-form-card" style="display:none;">
+                        <h3 class="model-form-title" id="model-form-title">添加模型</h3>
+                        <form id="model-form" autocomplete="off">
+                            <div class="model-form-grid">
+                                <div class="field">
+                                    <label class="field-label">模型名称 *</label>
+                                    <input type="text" class="field-input" id="mf-name" placeholder="例如: DeepSeek-R1" required>
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">MODEL_NAME (API模型标识符) *</label>
+                                    <input type="text" class="field-input" id="mf-model-id" placeholder="例如: deepseek/deepseek-r1:free" required>
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">BASE_URL (API地址)</label>
+                                    <input type="text" class="field-input" id="mf-api-base" placeholder="https://openrouter.ai/api/v1" value="https://openrouter.ai/api/v1">
+                                </div>
+                                <div class="field">
+                                    <label class="field-label">API Key</label>
+                                    <input type="password" class="field-input" id="mf-api-key" placeholder="sk-or-v1-...">
+                                </div>
+                            </div>
+                            <div class="model-form-actions">
+                                <button type="button" class="btn-cancel" id="btn-cancel-model">取消</button>
+                                <button type="submit" class="btn-submit-feedback">保存</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="doc-list-section">
+                        <div class="doc-header-row">
+                            <h3 class="doc-header-title">模型配置</h3>
+                            <button class="btn-upload" id="btn-add-model" style="height:32px;font-size:12px">+ 添加模型</button>
+                        </div>
+                        <div class="doc-table">
+                            <div class="table-header">
+                                <div class="th" style="width:180px">模型名称</div>
+                                <div class="th" style="width:240px">MODEL_NAME</div>
+                                <div class="th" style="flex:1">BASE_URL</div>
+                                <div class="th" style="width:80px">状态</div>
+                                <div class="th" style="width:200px">操作</div>
+                            </div>
+                            <div class="table-body" id="models-table-body"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Crawler Tab -->
+                <div class="admin-tab" id="tab-crawler">
+                    <div class="crawler-control-card">
+                        <div class="crawler-status-row">
+                            <div class="crawler-status-indicator" id="crawler-status-indicator">
+                                <span class="crawler-status-dot" id="crawler-status-dot"></span>
+                                <span class="crawler-status-text" id="crawler-status-text">检测中...</span>
+                            </div>
+                            <div class="crawler-actions">
+                                <button class="btn-crawler btn-crawler-start" id="btn-crawler-start" disabled>启动爬虫</button>
+                                <button class="btn-crawler btn-crawler-stop" id="btn-crawler-stop" disabled>停止爬虫</button>
+                            </div>
+                        </div>
+                        <div class="crawler-info-row" id="crawler-info-row">
+                            <div class="crawler-info-item">
+                                <span class="crawler-info-label">进程 PID</span>
+                                <span class="crawler-info-value" id="crawler-pid">-</span>
+                            </div>
+                            <div class="crawler-info-item">
+                                <span class="crawler-info-label">运行时长</span>
+                                <span class="crawler-info-value" id="crawler-uptime">-</span>
+                            </div>
+                            <div class="crawler-info-item">
+                                <span class="crawler-info-label">脚本路径</span>
+                                <span class="crawler-info-value" style="font-size:12px">pachong/zzuli_news_crawler.py</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crawler-log-card">
+                        <div class="crawler-log-header">
+                            <h3 class="crawler-log-title">运行日志</h3>
+                            <button class="btn-refresh" id="btn-refresh-crawler">↻ 刷新</button>
+                        </div>
+                        <div class="crawler-log-area" id="crawler-log-area">
+                            <p class="crawler-log-placeholder">暂无日志输出</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div class="admin-tab" id="tab-settings">
+                    <div class="settings-card">
+                        <h3>系统信息</h3>
+                        <p>Campus Knowledge QA System v1.0.0</p>
+                        <p>作者：Kamine</p>
+                        <p>GitHub主页：https://github.com/Kamine-Jf</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Custom Confirm Modal -->
+    <div class="confirm-modal-overlay" id="confirm-modal-overlay" style="display:none;">
+        <div class="confirm-modal-card">
+            <h3 class="confirm-modal-title" id="confirm-modal-title">永久删除对话</h3>
+            <p class="confirm-modal-body" id="confirm-modal-body"></p>
+            <div class="confirm-modal-actions">
+                <button class="confirm-modal-cancel" id="confirm-modal-cancel">取消</button>
+                <button class="confirm-modal-confirm" id="confirm-modal-confirm">删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/app.js?v=21"></script>
+</body>
+</html>
