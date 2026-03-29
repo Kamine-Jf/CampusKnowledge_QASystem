@@ -55,7 +55,7 @@ Bashdocker-compose up -d --build
 4. 访问系统
 打开浏览器访问 http://localhost:8000（端口以 docker-compose.yml 配置为准）
 系统启动后即可在界面中提问或点击侧边栏快捷入口。
-
+```
 ---
 
 ## 📸 系统截图
@@ -80,7 +80,7 @@ Bashdocker-compose up -d --build
 
 ---
 
-
+```bash
 📁 项目结构（核心目录）
 textCampusKnowledge_QASystem/
 ├── src/                  # 核心源码（RAG 管道、检索逻辑）
@@ -118,3 +118,4 @@ textCampusKnowledge_QASystem/
 欢迎 Star ⭐、Issue 与 PR，一起完善校园智能问答系统！
 
 项目链接：https://github.com/Kamine-Jf/CampusKnowledge_QASystem
+```
