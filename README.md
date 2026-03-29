@@ -26,7 +26,7 @@
 ## 🛠 技术栈
 
 - **后端**：Python + FastAPI
-- **AI 框架**：LangChain（RAG 管道）
+- **AI 框架**：LangChain（RAG）
 - **向量数据库**：Milvus（Docker 部署）
 - **结构化数据库**：MySQL
 - **大模型**：可自行后台添加
