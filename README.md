@@ -50,10 +50,7 @@ cd CampusKnowledge_QASystem
 
 3. 启动服务
 Bashdocker-compose up -d --build
-详细启动指南请参考仓库中的：
 
-stage3_run_guide.md（第3阶段运行说明）
-docs/ 目录下的其他文档
 
 4. 访问系统
 打开浏览器访问 http://localhost:8000（端口以 docker-compose.yml 配置为准）
