@@ -56,24 +56,29 @@ Bashdocker-compose up -d --build
 打开浏览器访问 http://localhost:8000（端口以 docker-compose.yml 配置为准）
 系统启动后即可在界面中提问或点击侧边栏快捷入口。
 
-📸 系统截图
-欢迎界面（浅色模式）
-<img src="screenshots/welcome-light-1.png" alt="欢迎界面 - 浅色模式">
-欢迎界面（暗黑模式）
-<img src="screenshots/welcome-dark-1.png" alt="欢迎界面 - 暗黑模式">
-欢迎界面（浅色模式 - 另一种布局）
-<img src="screenshots/welcome-light-2.png" alt="欢迎界面 - 浅色模式2">
-欢迎界面（暗黑模式 - 另一种布局）
-<img src="screenshots/welcome-dark-2.png" alt="欢迎界面 - 暗黑模式2">
-学校简介查询示例（浅色模式）
-<img src="screenshots/school-intro-light.png" alt="学校简介 - 浅色模式">
-学校简介查询示例（暗黑模式）
-<img src="screenshots/school-intro-dark.png" alt="学校简介 - 暗黑模式">
-如何添加截图：
-在仓库根目录新建 screenshots/ 文件夹
-将本消息中提供的6张图片上传到该文件夹
-按上方文件名重命名（welcome-light-1.png、welcome-dark-1.png 等）
-提交后 README 中的图片即可正常显示
+---
+
+## 📸 系统截图
+
+### 欢迎界面（浅色模式）
+![欢迎界面 - 浅色模式](src/screenshots/welcome-light-1.png)
+
+### 欢迎界面（暗黑模式）
+![欢迎界面 - 暗黑模式](src/screenshots/welcome-dark-1.png)
+
+### 欢迎界面（浅色模式 - 另一种布局）
+![欢迎界面 - 浅色模式2](src/screenshots/welcome-light-2.png)
+
+### 欢迎界面（暗黑模式 - 另一种布局）
+![欢迎界面 - 暗黑模式2](src/screenshots/welcome-dark-2.png)
+
+### 学校简介查询示例（浅色模式）
+![学校简介 - 浅色模式](src/screenshots/school-intro-light.png)
+
+### 学校简介查询示例（暗黑模式）
+![学校简介 - 暗黑模式](src/screenshots/school-intro-dark.png)
+
+---
 
 
 📁 项目结构（核心目录）
