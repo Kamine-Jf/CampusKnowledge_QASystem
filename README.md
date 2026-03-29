@@ -1,6 +1,7 @@
 # 基于 LangChain + Milvus 的校园知识库智能问答系统
 
 ![Campus QA Logo](https://github.com/Kamine-Jf/CampusKnowledge_QASystem/blob/main/static/logo.png)  
+<img static=“logo.png” alt="Campus QA Logo">
 
 
 **针对校园政策查询繁琐、信息分散的问题，搭建智能问答系统**，整合教务规则、学生手册等资料，实现精准高效检索，为师生提供便捷信息服务，提升校园管理信息化水平。
