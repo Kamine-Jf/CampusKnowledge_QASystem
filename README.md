@@ -85,7 +85,7 @@ textCampusKnowledge_QASystem/
 ├── static/               # 前端静态资源（HTML/CSS/JS）
 ├── config/               # 配置文件
 ├── data/                 # 校园资料（PDF/Excel 等）
-├── docs/                 # 文档（含开题报告相关）
+├── docs/                 # 文档
 ├── test/                 # 测试脚本
 ├── docker-compose.yml    # Docker 部署配置
 ├── Dockerfile
