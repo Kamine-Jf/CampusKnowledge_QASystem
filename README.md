@@ -113,8 +113,7 @@ textCampusKnowledge_QASystem/
 学校：郑州轻工业大学
 
 
-📜 许可证
-本项目采用 MIT License（如暂无 LICENSE 文件，可后续补充）。
+
 欢迎 Star ⭐、Issue 与 PR，一起完善校园智能问答系统！
 
 项目链接：https://github.com/Kamine-Jf/CampusKnowledge_QASystem
