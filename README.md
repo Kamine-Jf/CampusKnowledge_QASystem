@@ -26,7 +26,7 @@
 ## 🛠 技术栈
 
 - **后端**：Python + FastAPI
-- **AI 框架**：LangChain（RAG 管道）
+- **AI 框架**：LangChain（RAG）
 - **向量数据库**：Milvus（Docker 部署）
 - **结构化数据库**：MySQL
 - **大模型**：可自行后台添加
@@ -55,27 +55,32 @@ Bashdocker-compose up -d --build
 4. 访问系统
 打开浏览器访问 http://localhost:8000（端口以 docker-compose.yml 配置为准）
 系统启动后即可在界面中提问或点击侧边栏快捷入口。
+```
+---
 
-📸 系统截图
-欢迎界面（浅色模式）
-<img src="screenshots/welcome-light-1.png" alt="欢迎界面 - 浅色模式">
-欢迎界面（暗黑模式）
-<img src="screenshots/welcome-dark-1.png" alt="欢迎界面 - 暗黑模式">
-欢迎界面（浅色模式 - 另一种布局）
-<img src="screenshots/welcome-light-2.png" alt="欢迎界面 - 浅色模式2">
-欢迎界面（暗黑模式 - 另一种布局）
-<img src="screenshots/welcome-dark-2.png" alt="欢迎界面 - 暗黑模式2">
-学校简介查询示例（浅色模式）
-<img src="screenshots/school-intro-light.png" alt="学校简介 - 浅色模式">
-学校简介查询示例（暗黑模式）
-<img src="screenshots/school-intro-dark.png" alt="学校简介 - 暗黑模式">
-如何添加截图：
-在仓库根目录新建 screenshots/ 文件夹
-将本消息中提供的6张图片上传到该文件夹
-按上方文件名重命名（welcome-light-1.png、welcome-dark-1.png 等）
-提交后 README 中的图片即可正常显示
+## 📸 系统截图
 
+### 欢迎界面（浅色模式）
+![欢迎界面 - 浅色模式](src/screenshots/welcome-light-1.png)
 
+### 欢迎界面（暗黑模式）
+![欢迎界面 - 暗黑模式](src/screenshots/welcome-dark-1.png)
+
+### 欢迎界面（浅色模式 - 另一种布局）
+![欢迎界面 - 浅色模式2](src/screenshots/welcome-light-2.png)
+
+### 欢迎界面（暗黑模式 - 另一种布局）
+![欢迎界面 - 暗黑模式2](src/screenshots/welcome-dark-2.png)
+
+### 学校简介查询示例（浅色模式）
+![学校简介 - 浅色模式](src/screenshots/school-intro-light.png)
+
+### 学校简介查询示例（暗黑模式）
+![学校简介 - 暗黑模式](src/screenshots/school-intro-dark.png)
+
+---
+
+```bash
 📁 项目结构（核心目录）
 textCampusKnowledge_QASystem/
 ├── src/                  # 核心源码（RAG 管道、检索逻辑）
@@ -88,7 +93,7 @@ textCampusKnowledge_QASystem/
 ├── Dockerfile
 ├── main.py               # FastAPI 入口
 ├── requirements.txt      # Python 依赖
-└── stage3_run_guide.md   # 运行指南
+└── run_guide.md   # 运行指南
 
 
 
@@ -113,3 +118,4 @@ textCampusKnowledge_QASystem/
 欢迎 Star ⭐、Issue 与 PR，一起完善校园智能问答系统！
 
 项目链接：https://github.com/Kamine-Jf/CampusKnowledge_QASystem
+```
