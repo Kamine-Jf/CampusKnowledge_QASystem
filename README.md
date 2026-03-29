@@ -90,11 +90,7 @@ textCampusKnowledge_QASystem/
 ├── requirements.txt      # Python 依赖
 └── stage3_run_guide.md   # 运行指南
 
-📄 相关文档
 
-毕业设计开题报告：见仓库 docs/开题报告/ 或本地提供的 谢嘉峰开题报告表.docx
-研究背景与意义、技术路线、时间安排等详见开题报告
-测试报告与论文：后续开发阶段会持续更新
 
 
 🎯 项目意义
