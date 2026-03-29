@@ -8,15 +8,15 @@ langchain==0.1.10
 langchain-community==0.0.28
 pypdf==4.0.2
 python-docx==0.8.11
-streamlit==1.32.2
 torch==2.2.1+cu121       # 3.11最优版本，适配NVIDIA显卡，显存优化拉满
 transformers==4.39.1
 sentence-transformers==2.7.0
 numpy==1.26.4
 python-dotenv==1.0.1
-logging==0.5.1.2
 requests==2.31.0
+beautifulsoup4==4.12.3      # 爬虫模块 zzuli_news_crawler.py 解析 HTML 依赖
 openai==1.14.0
+httpx==0.27.0               # qwen_operate.py 中 OpenAI 客户端超时配置依赖
 xlrd==2.0.1
 openpyxl==3.1.2
 jieba==0.42.1

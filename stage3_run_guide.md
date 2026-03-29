@@ -19,10 +19,4 @@
 - **模型下载超时或显存不足**：无网络时先执行 `python download_model.py` 在联网环境预拉取；所有脚本默认在 CPU 上运行，若显存影响请确认未手动启用 GPU。
 - **MySQL 查询失败**：检查 MySQL 服务是否启动、账号密码配置是否正确； `src/database/mysql_config.py` 中的连接参数需与实际一致。
 
-## 毕设演示步骤建议
-1. 启动 Milvus 与 MySQL 服务，激活虚拟环境 `.venv`。
-2. 展示运行 `python download_model.py` 的过程，说明模型缓存目录位于 D 盘。
-3. 演示 `python src/vector_db/pdf2vector.py`，展示解析日志与向量维度输出。
-4. 运行 `python -c "from src.rag.rag_core import sync_pdf_vectors_to_milvus; sync_pdf_vectors_to_milvus()"`，讲解向量入库成功提示。
-5. 执行 `python src/rag/rag_core.py`，展示结构化与非结构化结果，重点说明 "结构化优先 + 向量补充" 的融合策略。
-6. 若需要补充说明，可运行 `python src/vector_db/milvus_operate.py` 展示集合索引与检索的单体演示。
+
