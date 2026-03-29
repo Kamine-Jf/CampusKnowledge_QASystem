@@ -55,7 +55,7 @@ Bashdocker-compose up -d --build
 4. 访问系统
 打开浏览器访问 http://localhost:8000（端口以 docker-compose.yml 配置为准）
 系统启动后即可在界面中提问或点击侧边栏快捷入口。
-
+```bash
 📸 系统截图
 欢迎界面（浅色模式）
 <img src="screenshots/welcome-light-1.png" alt="欢迎界面 - 浅色模式">
