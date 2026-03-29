@@ -93,7 +93,7 @@ textCampusKnowledge_QASystem/
 ├── Dockerfile
 ├── main.py               # FastAPI 入口
 ├── requirements.txt      # Python 依赖
-└── stage3_run_guide.md   # 运行指南
+└── run_guide.md   # 运行指南
 
 
 
